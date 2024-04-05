@@ -1,6 +1,8 @@
 from uuid import uuid4
 
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
+
 
 from utils.helpers import get_random_string
 
@@ -14,7 +16,7 @@ class Bill(models.Model):
     )
     amount = models.DecimalField(max_digits=10, decimal_places=2)
 
-    products = models.ManyToManyField(Product)
+    orders = ArrayField(models.JSONField(), default=list)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
     employee = models.ForeignKey(User, on_delete=models.PROTECT)
 
