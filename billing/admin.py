@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from djangoql.admin import DjangoQLSearchMixin
 
 from .models.users import User
+from billing.models import Bill, Product, Customer
 
 
 @admin.register(User)
@@ -57,6 +58,21 @@ class UserAdmin(DjangoQLSearchMixin, BaseUserAdmin):
             },
         )
     )
+
+
+@admin.register(Product)
+class ProductAdmin(DjangoQLSearchMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(Customer)
+class CustomerAdmin(DjangoQLSearchMixin, admin.ModelAdmin):
+    pass
+
+
+@admin.register(Bill)
+class BillAdmin(DjangoQLSearchMixin, admin.ModelAdmin):
+    pass
 
 
 admin.site.site_header = 'Billing Admin'
