@@ -15,6 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at'
         )
+        read_only_fields = ('external_id', 'created_at', 'updated_at')
 
     def get_meta(self, obj):
         return {

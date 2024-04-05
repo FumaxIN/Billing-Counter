@@ -1,5 +1,17 @@
+from core import settings
 from django.urls import path, include
+from rest_framework_nested import routers
+
 from billing.views.auth import APIRegistrationView, APILoginView
+from billing.views.products import ProductViewSet
+
+app_name = "billing"
+
+router = routers.SimpleRouter(trailing_slash=False)
+if settings.DEBUG:
+    router = routers.DefaultRouter(trailing_slash=False)
+
+router.register(r"products", ProductViewSet)
 
 
 auth_urls = [
@@ -8,5 +20,6 @@ auth_urls = [
 ]
 
 urlpatterns = [
+    path("", include(router.urls)),
     path("auth/", include(auth_urls)),
 ]
