@@ -5,6 +5,7 @@ from rest_framework_nested import routers
 from billing.views.auth import APIRegistrationView, APILoginView
 from billing.views.products import ProductViewSet
 from billing.views.customers import CustomerViewSet
+from billing.views.billings import BillViewSet
 
 app_name = "billing"
 
@@ -14,6 +15,7 @@ if settings.DEBUG:
 
 router.register(r"products", ProductViewSet)
 router.register(r"customers", CustomerViewSet)
+router.register(r"bills", BillViewSet)
 
 
 auth_urls = [
