@@ -12,6 +12,19 @@ class BillViewSet(
     ListModelMixin,
     GenericViewSet,
 ):
+    """
+    products_id to be provided as:
+    [
+        {
+            "product_id": "external_id",
+            "quantity": 1
+        },
+        {
+            "product_id": "external_id",
+            "quantity": 2
+        }
+    ]
+    """
     queryset = Bill.objects.all()
     serializer_class = BillSerializer
     permission_classes = [permissions.IsAuthenticated]

@@ -52,8 +52,6 @@ if settings.DEBUG:
             kwargs={"exception": Exception("Page not Found")},
         ),
         path("500/", default_views.server_error),
-        path("api-auth", jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-        path("api-auth/token/refresh", jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     ]
 
 urlpatterns += api_urlpatterns

@@ -5,9 +5,10 @@ from django.core.validators import RegexValidator
 from utils.helpers import get_random_string
 
 phone_regex = RegexValidator(
-    regex=r"^\+?91?[6789]\d{9}$",
-    message="Phone number must be entered in the format: '+918888888888'.",
+    regex=r"^[6789]\d{9}$",
+    message="Phone number must be 10 digits and start with '6', '7', '8', or '9'.",
 )
+
 
 class Customer(models.Model):
     external_id = models.UUIDField(default=uuid4, unique=True, db_index=True)

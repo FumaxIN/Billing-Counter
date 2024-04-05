@@ -20,12 +20,12 @@ router.register(r"bills", BillViewSet)
 
 
 auth_urls = [
-    path("register/", APIRegistrationView.as_view(), name="register"),
-    path("login/", APILoginView.as_view(), name="login"),
+    path("register", APIRegistrationView.as_view(), name="register"),
+    path("login", APILoginView.as_view(), name="login"),
 ]
 
 urlpatterns = [
     path("", include(router.urls)),
     path("auth/", include(auth_urls)),
-    path("analytics/", Analytics.as_view(), name="analytics"),
+    path("analytics", Analytics.as_view(), name="analytics"),
 ]
