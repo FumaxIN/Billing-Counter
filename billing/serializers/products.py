@@ -7,6 +7,7 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = (
             'external_id',
+            'url',
             'name',
             'description',
             'price',
