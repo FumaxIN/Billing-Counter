@@ -1,14 +1,14 @@
-from rest_framework import permissions, status
+from rest_framework import permissions
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, DestroyModelMixin
 from rest_framework.viewsets import GenericViewSet
 
 from utils.mixins import PartialUpdateModelMixin
 
-from billing.models import Product
-from billing.serializers import ProductSerializer
+from billing.models import Customer
+from billing.serializers import CustomerSerializer
 
 
-class ProductViewSet(
+class CustomerViewSet(
     CreateModelMixin,
     RetrieveModelMixin,
     ListModelMixin,
@@ -16,7 +16,7 @@ class ProductViewSet(
     PartialUpdateModelMixin,
     GenericViewSet,
 ):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
     permission_classes = [permissions.IsAuthenticated]
-    lookup_field = "url"
+    lookup_field = "external_id"
