@@ -6,6 +6,7 @@ from billing.views.auth import APIRegistrationView, APILoginView
 from billing.views.products import ProductViewSet
 from billing.views.customers import CustomerViewSet
 from billing.views.billings import BillViewSet
+from billing.views.analytics import Analytics
 
 app_name = "billing"
 
@@ -26,4 +27,5 @@ auth_urls = [
 urlpatterns = [
     path("", include(router.urls)),
     path("auth/", include(auth_urls)),
+    path("analytics/", Analytics.as_view(), name="analytics"),
 ]
